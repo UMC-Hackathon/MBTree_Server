@@ -21,7 +21,7 @@ public class PostController {
     @Autowired
     private UserRepository userRepository;
 
-    @PostMapping("/tree/post")// 글 작성 // 잠시보류
+    @PostMapping("/tree/post")// 글 작성
     public String postMessage(@RequestBody Posts posts){
         // url로 userID를 받고, post로 writerID ,content 받아요
         Post post = new Post();
@@ -43,7 +43,7 @@ public class PostController {
 
         List<Post> post = postRepository.findByUserId(userID);
 
-        System.out.println("포스트 갯수 : "+post.size()); // 이런식으로 읽을 수 있습니다.
+        System.out.println("포스트 정보 : "+post); // 이런식으로 읽을 수 있습니다.
         return "";
     }
 

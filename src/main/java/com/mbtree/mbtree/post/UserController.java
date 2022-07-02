@@ -35,7 +35,7 @@ public class UserController {
         return "index";
     }
 
-    @GetMapping("/users")
+    @GetMapping("/users") //사용자조회
     public String readPost(Model model, @RequestParam(value = "useridx") int userID){
         System.out.println("gg");
 
