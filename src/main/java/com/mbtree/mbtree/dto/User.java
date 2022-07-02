@@ -13,18 +13,15 @@ import java.io.Serializable;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class PostDTO implements Serializable {
+public class User implements Serializable {
+
     @Id // primary key
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
-    private String content;
-
-    @ManyToOne
-    @JoinColumn(name = "writerID")
-    private UserDTO writerID;
-
-    @ManyToOne
-    @JoinColumn(name = "treeID")
-    private TreeDTO treeID;
-
+    private String name;
+    private String userToken;
+    private String email;
+    private String myers;
+    private String location;
 }

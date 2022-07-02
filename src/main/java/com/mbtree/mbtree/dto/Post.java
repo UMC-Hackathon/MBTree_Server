@@ -1,12 +1,30 @@
 package com.mbtree.mbtree.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+import java.io.Serializable;
 
 @Builder
-public class Post {
-    private int writerID;
-    private int treeID;
+@Data
+@Entity
+@NoArgsConstructor
+@AllArgsConstructor
+public class Post implements Serializable {
+    @Id // primary key
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private String content;
 
+    @ManyToOne
+    @JoinColumn(name = "writerId")
+    private User writerId;
+
+    @ManyToOne
+    @JoinColumn(name = "userId")
+    private User userId;
 
 }

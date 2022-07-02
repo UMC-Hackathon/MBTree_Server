@@ -1,9 +1,9 @@
 package com.mbtree.mbtree.repository;
 
-import com.mbtree.mbtree.dto.UserDTO;
+import com.mbtree.mbtree.dto.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserRepository extends JpaRepository<UserDTO, Long> {
+public interface UserRepository extends JpaRepository<User, Long> {
 
-    UserDTO findById(int id);
+    User findById(int id);
 }
