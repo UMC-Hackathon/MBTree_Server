@@ -9,4 +9,6 @@ public class Posts {
     private String writerId;
     private String userId;
     private String content;
+    private String xPos;
+    private String yPos;
 }

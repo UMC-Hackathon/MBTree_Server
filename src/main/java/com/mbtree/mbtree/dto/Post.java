@@ -18,6 +18,8 @@ public class Post implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String content;
+    private Float xPos;
+    private Float yPos;
 
     @ManyToOne
     @JoinColumn(name = "writerId")

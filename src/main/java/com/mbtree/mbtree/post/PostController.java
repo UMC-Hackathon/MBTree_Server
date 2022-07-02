@@ -25,11 +25,14 @@ public class PostController {
     public String postMessage(@RequestBody Posts posts){
         // url로 userID를 받고, post로 writerID ,content 받아요
         Post post = new Post();
+        System.out.println(posts);
         User user = userRepository.findById(Integer.parseInt(posts.getUserId()));
         User writer = userRepository.findById(Integer.parseInt(posts.getWriterId()));
         post.setUserId(user);
         post.setWriterId(writer); // 이거 로그인 기능 생기면 구현 예정
         post.setContent(posts.getContent());
+        post.setXPos(Float.parseFloat(posts.getXPos()));
+        post.setYPos(Float.parseFloat(posts.getYPos()));
         postRepository.save(post);
         return "index";
     }
