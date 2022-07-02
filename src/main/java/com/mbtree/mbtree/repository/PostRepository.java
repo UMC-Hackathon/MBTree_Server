@@ -6,5 +6,4 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface PostRepository extends JpaRepository<PostDTO, Long> {
 
     PostDTO findById(int id);
-
 }

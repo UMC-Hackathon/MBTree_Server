@@ -26,4 +26,5 @@ public class PostDTO implements Serializable {
     @ManyToOne
     @JoinColumn(name = "treeID")
     private TreeDTO treeID;
+
 }

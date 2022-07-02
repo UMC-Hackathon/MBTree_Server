@@ -22,4 +22,5 @@ public class TreeDTO implements Serializable {
     @ManyToOne
     @JoinColumn(name = "userID")
     private UserDTO user;
+
 }

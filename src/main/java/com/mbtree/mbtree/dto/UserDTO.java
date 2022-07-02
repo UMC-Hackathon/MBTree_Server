@@ -24,5 +24,4 @@ public class UserDTO implements Serializable {
     private String email;
     private String mbti;
     private String location;
-
 }

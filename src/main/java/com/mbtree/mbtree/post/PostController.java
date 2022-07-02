@@ -15,8 +15,6 @@ public class PostController {
     @Autowired
     private PostRepository postRepository;
 
-    @PostMapping
-
 
     @GetMapping("/read/post")
     public String readPost(Model model, @RequestParam(value = "id") int postID){
