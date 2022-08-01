@@ -10,8 +10,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import com.mbtree.mbtree.config.BaseException;
+import com.mbtree.mbtree.config.BaseResponse;
+import com.mbtree.mbtree.config.BaseResponseStatus;
 import java.util.List;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import com.fasterxml.jackson.databind.ObjectMapper;
 @Controller
 public class PostController {
 
@@ -38,20 +43,22 @@ public class PostController {
     }
 
 
-    @GetMapping("/tree") // 나무 조회
-    public String getTree(Model model, @RequestParam(value = "useridx") int userID){
 
+
+    @ResponseBody
+    @GetMapping("/tree") // 나무 조회
+    public BaseResponse<List<Post>> getTree(Model model, @RequestParam(value = "useridx") int userID){
+        // try {
         List<Post> post = postRepository.findByUserId(userID);
 
-        System.out.println("포스트 정보 : "+post); // 이런식으로 읽을 수 있습니다.
-        return "";
+        System.out.println("포스트 정보 : " + post); // 이런식으로 읽을 수 있습니다.
+        return new BaseResponse<>(post);
+        //   }
+       /* catch (BaseException exception){
+            return new BaseResponse<>(exception.getStatus());
+        }*/
     }
 
-    @GetMapping("/tree/msg")
-    public String readPost(Model model , @RequestParam(value = "msgidx") int postID){
-        Post post = postRepository.findById(postID); //
-        System.out.println("포스트 내용 : "+ post.getContent()); // 이런식으로 읽을 수 있습니다.
-        return "";
-    }
+
 
 }
