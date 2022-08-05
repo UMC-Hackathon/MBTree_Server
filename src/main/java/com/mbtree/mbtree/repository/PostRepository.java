@@ -10,7 +10,7 @@ import java.util.List;
 public interface PostRepository extends JpaRepository<Post, Long> {
 
     //@Query(value = "select * from post where id = ?;" , nativeQuery = true)
-    Post findById(int messageId) throws BaseException;
+    Post findById(int messageId) ;
 
 
     @Query(value = "select * from post where user_id = ?;" , nativeQuery = true)
