@@ -7,9 +7,13 @@ import lombok.Data;
 @Data
 @Builder
 public class Users {
+    private String uuid;
     private String name;
-    private String userToken;
     private String email;
-    private String myers;
+    private String mbti;
     private String location;
+    private String token;
+    private int point;
+    private String createDate;
+
 }
