@@ -16,6 +16,7 @@ import java.io.Serializable;
 public class Post implements Serializable {
     @Id // primary key
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+   // @Column(name = "id")
     private int id;
     private String content;
     private Float xPos;
