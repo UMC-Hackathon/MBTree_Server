@@ -15,6 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -75,7 +76,7 @@ public class MessageController {
     }
 
     @GetMapping("/message") // 메세지 조회
-    public BaseResponse<Message> getMessage(Model model, @RequestParam(value = "messageId") int messageId){
+    public BaseResponse<Message> getMessage(@RequestParam(value = "messageId") int messageId){
         System.out.println("메세지 조회 시작");
         System.out.println("messageId"+messageId);
         try {
@@ -84,6 +85,20 @@ public class MessageController {
             //message 없는 경우
             if(message ==null ){System.out.println("MESSAGES_EMPTY_POST_ID" ); throw new BaseException(MESSAGES_EMPTY_POST_ID);}
             System.out.println("포스트 Controller message 정보 : " + message);
+            return new BaseResponse<>(message);
+        }
+        catch (BaseException exception){
+            return new BaseResponse<>(exception.getStatus());
+        }
+    }
+    
+    @DeleteMapping("/message/delete")
+    public BaseResponse<Message> delete (@RequestParam(value = "messageId") int messageId){
+        
+        try {
+            Message message = messageRepository.findById(messageId);
+            if(message ==null ){System.out.println("삭제중 쪽제 아이디 오류" ); throw new BaseException(MESSAGES_EMPTY_POST_ID);}
+            messageRepository.delete(message);
             return new BaseResponse<>(message);
         }
         catch (BaseException exception){
