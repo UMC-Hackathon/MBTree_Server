@@ -17,11 +17,16 @@ public class User implements Serializable {
 
     @Id // primary key
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    //@Column(name = "id")
     private int id;
+    private String uuid;
     private String name;
-    private String userToken;
     private String email;
-    private String myers;
+    private String mbti;
     private String location;
+    private String token;
+    private int point;
+    private String createDate;
+
+
 }

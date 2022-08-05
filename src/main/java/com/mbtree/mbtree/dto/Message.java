@@ -13,21 +13,23 @@ import java.io.Serializable;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class Post implements Serializable {
+public class Message implements Serializable {
     @Id // primary key
     @GeneratedValue(strategy = GenerationType.IDENTITY)
    // @Column(name = "id")
     private int id;
     private String content;
-    private Float xPos;
-    private Float yPos;
-
+    private String createDate;
+    private int xPos;
+    private int yPos;
+    private int r; //read
+    private int paperStyle;
     @ManyToOne
     @JoinColumn(name = "writerId")
     private User writerId;
 
     @ManyToOne
-    @JoinColumn(name = "userId")
-    private User userId;
+    @JoinColumn(name = "treeId")
+    private User treeId;
 
 }
