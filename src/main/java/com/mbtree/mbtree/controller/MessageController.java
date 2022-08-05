@@ -9,6 +9,7 @@ import com.mbtree.mbtree.dto.Messages;
 import com.mbtree.mbtree.dto.User;
 import com.mbtree.mbtree.repository.MessageRepository;
 import com.mbtree.mbtree.repository.UserRepository;
+import java.time.LocalDateTime;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,24 +32,29 @@ public class MessageController {
 
     @Autowired
     private UserRepository userRepository;
-/*
-    @Autowired
-    private PostService postService;
-*/
+
     @PostMapping("/message/send")// 글 작성
     public BaseResponse<Message> postMessage(@RequestBody Messages messages) throws BaseException {
         // url로 userID를 받고, post로 writerID ,content 받아요
+        try {
         Message message = new Message();
         System.out.println(messages);
-        User user = userRepository.findById(Integer.parseInt(messages.getTreeId()));
-        User writer = userRepository.findById(Integer.parseInt(messages.getWriterId()));
-        message.setTreeId(user);
-        message.setWriterId(writer); // 이거 로그인 기능 생기면 구현 예정
+        User tree = userRepository.findById(messages.getTreeId());
+            if(tree == null ){System.out.println("쪽지 보내기 tree 주인 USERS_EMPTY_USER_ID" ); throw new BaseException(USERS_EMPTY_USER_ID);}
+        User writer = userRepository.findById(messages.getWriterId());
+            if(writer == null ){System.out.println("쪽지 보내기 작성자 USERS_EMPTY_USER_ID" ); throw new BaseException(USERS_EMPTY_USER_ID);}
+        message.setTreeId(tree);
+        message.setWriterId(writer); // 이거 로그인 기능 생기면 구현 예정 일단은 임시로 값 넘기기
         message.setContent(messages.getContent());
         message.setXPos(messages.getXPos());
         message.setYPos((messages.getYPos()));
+        message.setCreateDate(LocalDateTime.now());
         messageRepository.save(message);
         return new BaseResponse<>(message);
+        }
+        catch (BaseException exception){
+            return new BaseResponse<>(exception.getStatus());
+        }
     }
 
 
@@ -59,7 +65,7 @@ public class MessageController {
             User user = userRepository.findById(treeID);
                 if(user ==null ){System.out.println("나무조회 USERS_EMPTY_USER_ID" ); throw new BaseException(USERS_EMPTY_USER_ID);}
             List<Message> messages = messageRepository.findByUserId(treeID);
-                 if(messages ==null ){System.out.println("MESSAGES_EMPTY_USER_MESSAGES" ); throw new BaseException(MESSAGES_EMPTY_USER_MESSAGES);}
+                 if(messages == null ){System.out.println("MESSAGES_EMPTY_USER_MESSAGES" ); throw new BaseException(MESSAGES_EMPTY_USER_MESSAGES);}
             System.out.println("포스트 리스트 : " + messages); // 이런식으로 읽을 수 있습니다.
             return new BaseResponse<>(messages);
          }

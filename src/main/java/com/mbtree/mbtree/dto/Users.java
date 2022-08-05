@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class Users {
+public class Users  {
     private String uuid;
     private String name;
     private String email;
@@ -14,6 +14,6 @@ public class Users {
     private String location;
     private String token;
     private int point;
-    private String createDate;
+   // private LocalDateTime createDate;
 
 }

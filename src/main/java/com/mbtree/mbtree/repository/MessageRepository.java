@@ -13,7 +13,7 @@ public interface MessageRepository extends JpaRepository<Message, Long> {
     Message findById(int messageId) ;
 
 
-    @Query(value = "select * from Message where treeId = ?;" , nativeQuery = true)
+    @Query(value = "select * from message where id = ?;" , nativeQuery = true)
     List<Message> findByUserId(int treeId) throws BaseException;
 
 }

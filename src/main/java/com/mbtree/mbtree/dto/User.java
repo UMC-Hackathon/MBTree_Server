@@ -1,5 +1,6 @@
 package com.mbtree.mbtree.dto;
 
+import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,7 +18,7 @@ public class User implements Serializable {
 
     @Id // primary key
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    //@Column(name = "id")
+    @Column(name = "id")
     private int id;
     private String uuid;
     private String name;
@@ -26,7 +27,7 @@ public class User implements Serializable {
     private String location;
     private String token;
     private int point;
-    private String createDate;
+    private LocalDateTime createDate;
 
 
 }

@@ -8,6 +8,8 @@ import com.mbtree.mbtree.dto.User;
 
 import com.mbtree.mbtree.dto.Users;
 import com.mbtree.mbtree.repository.UserRepository;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +27,7 @@ public class UserController {
     private UserRepository userRepository;
 
     @PostMapping("/users/join") // 회원가입
-    public BaseResponse<Users> joinUser(@RequestBody Users user){
+    public BaseResponse<Users> joinUser(@RequestBody Users user)  {
         //username , userToken , email, character , location post로 받음
       //  try{
             System.out.println("유저" + user);
@@ -34,7 +36,10 @@ public class UserController {
             userDTO.setToken(user.getToken());
             userDTO.setMbti(user.getMbti());
             userDTO.setEmail(user.getEmail());
+            userDTO.setUuid(user.getUuid());
             userDTO.setLocation(user.getLocation());
+            userDTO.setCreateDate(LocalDateTime.now());
+            System.out.println("날짜 안찍힘?" + LocalDateTime.now());
             userRepository.save(userDTO);
             System.out.println("유저" + userDTO);
 
