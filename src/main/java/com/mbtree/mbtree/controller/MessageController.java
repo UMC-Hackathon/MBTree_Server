@@ -33,7 +33,7 @@ public class MessageController {
     @Autowired
     private UserRepository userRepository;
 
-    @PostMapping("/message/send")// 글 작성
+    @PostMapping("/message/send")// 쪽지전송
     public BaseResponse<Message> postMessage(@RequestBody Messages messages) throws BaseException {
         // url로 userID를 받고, post로 writerID ,content 받아요
         try {

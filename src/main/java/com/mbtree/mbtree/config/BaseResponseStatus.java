@@ -41,9 +41,7 @@ public enum BaseResponseStatus {
 
 
 
-
-    MODIFY_FAIL_USERNAME(false,4014,"유저네임 수정 실패"),//이거안쓰지않나?
-    MODIFY_FAIL_MYPAGE(false,4015,"마이페이지 수정 실패"),
+    MODIFY_FAIL_MYPAGE(false,4015,"마이페이지 수정 실패"),//아직안만ㄷ름
     DELETE_FAIL_POST(false,4016,"게시글 삭제 실패");
 
 
