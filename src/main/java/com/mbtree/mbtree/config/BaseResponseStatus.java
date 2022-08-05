@@ -21,9 +21,9 @@ public enum BaseResponseStatus {
     USERS_EMPTY_USER_ID(false, 2010, "유저 아이디 값을 확인해주세요."),
 
 
-    //post
-    POSTS_EMPTY_POST_ID(false, 2020,"비밀번호 입력해주세요"),
-    POSTS_EMPTY_USER_POST(false, 2021,"user의 post가 없습니다"),
+    //message
+    MESSAGES_EMPTY_POST_ID(false, 2020,"유효하지 않은 MessageId 입니다."),
+    MESSAGES_EMPTY_USER_MESSAGES(false, 2021,"user의 Message가 없습니다"),
 
     /**
      * 3000 : Response 오류
@@ -39,12 +39,12 @@ public enum BaseResponseStatus {
     DATABASE_ERROR(false, 4000, "데이터베이스 연결에 실패하였습니다."),
     SERVER_ERROR(false, 4001, "서버와의 연결에 실패하였습니다."),
 
-    //[PATCH] /users/{userIdx}
-    MODIFY_FAIL_USERNAME(false,4014,"유저네임 수정 실패"),
-    MODIFY_FAIL_POST(false,4015,"게시글 수정 실패"),
-    DELETE_FAIL_POST(false,4016,"게시글 삭제 실패"),
-    PASSWORD_ENCRYPTION_ERROR(false, 4011, "비밀번호 암호화에 실패하였습니다."),
-    PASSWORD_DECRYPTION_ERROR(false, 4012, "비밀번호 복호화에 실패하였습니다.");
+
+
+
+    MODIFY_FAIL_USERNAME(false,4014,"유저네임 수정 실패"),//이거안쓰지않나?
+    MODIFY_FAIL_MYPAGE(false,4015,"마이페이지 수정 실패"),
+    DELETE_FAIL_POST(false,4016,"게시글 삭제 실패");
 
 
 

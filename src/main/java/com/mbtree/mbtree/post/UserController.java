@@ -1,5 +1,7 @@
 package com.mbtree.mbtree.post;
 
+import static com.mbtree.mbtree.config.BaseResponseStatus.USERS_EMPTY_USER_ID;
+
 import com.mbtree.mbtree.config.BaseException;
 import com.mbtree.mbtree.config.BaseResponse;
 import com.mbtree.mbtree.dto.Post;
@@ -45,8 +47,9 @@ public class UserController {
     public BaseResponse<User> readPost(Model model, @RequestParam(value = "userId") int userID){
         System.out.println("gg");
     try{
-        User user = userRepository.findById(userID); //
-        System.out.println(user.getName()); // 이런식으로 읽을 수 있습니다.
+        User user = userRepository.findById(userID);
+            if(user ==null ){System.out.println("마이페이지 USERS_EMPTY_USER_ID" ); throw new BaseException(USERS_EMPTY_USER_ID);}
+        System.out.println(user.getName());
         System.out.println("실행잘됨?");
         return new BaseResponse<>(user);
     }
