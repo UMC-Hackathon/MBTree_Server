@@ -1,5 +1,6 @@
 package com.mbtree.mbtree.dto;
 
+import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,10 +17,10 @@ import java.io.Serializable;
 public class Message implements Serializable {
     @Id // primary key
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-   // @Column(name = "id")
+    @Column(name = "id")
     private int id;
     private String content;
-    private String createDate;
+    private LocalDateTime createDate;
     private int xPos;
     private int yPos;
     private int r; //read
