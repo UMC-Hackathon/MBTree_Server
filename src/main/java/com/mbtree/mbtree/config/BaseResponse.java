@@ -21,6 +21,7 @@ public class BaseResponse<T> {
 
     // 요청에 성공한 경우
     public BaseResponse(T result) {
+        System.out.println("BaseResponse 실행 성공");
         this.isSuccess = SUCCESS.isSuccess();
         this.message = SUCCESS.getMessage();
         this.code = SUCCESS.getCode();
@@ -29,6 +30,7 @@ public class BaseResponse<T> {
 
     // 요청에 실패한 경우
     public BaseResponse(BaseResponseStatus status) {
+        System.out.println("BaseResponse 실행 실패");
         this.isSuccess = status.isSuccess();
         this.message = status.getMessage();
         this.code = status.getCode();
