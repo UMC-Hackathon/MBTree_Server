@@ -4,11 +4,11 @@ import static com.mbtree.mbtree.config.BaseResponseStatus.*;
 
 import com.mbtree.mbtree.config.BaseException;
 import com.mbtree.mbtree.config.BaseResponse;
-import com.mbtree.mbtree.dto.Message;
-import com.mbtree.mbtree.dto.Messages;
-import com.mbtree.mbtree.dto.User;
-import com.mbtree.mbtree.repository.MessageRepository;
-import com.mbtree.mbtree.repository.UserRepository;
+import com.mbtree.mbtree.domain.message.Message;
+import com.mbtree.mbtree.dto.MessageResponseDto;
+import com.mbtree.mbtree.domain.user.User;
+import com.mbtree.mbtree.domain.message.MessageRepository;
+import com.mbtree.mbtree.domain.user.UserRepository;
 import java.time.LocalDateTime;
 import java.util.List;
 import org.slf4j.Logger;
@@ -35,20 +35,20 @@ public class MessageController {
     private UserRepository userRepository;
 
     @PostMapping("/message/send")// 쪽지전송
-    public BaseResponse<Message> postMessage(@RequestBody Messages messages) throws BaseException {
+    public BaseResponse<Message> postMessage(@RequestBody MessageResponseDto messageResponseDto) {
         // url로 userID를 받고, post로 writerID ,content 받아요
         try {
         Message message = new Message();
-        System.out.println(messages);
-        User tree = userRepository.findById(messages.getTreeId());
+        System.out.println(messageResponseDto);
+        User tree = userRepository.findById(messageResponseDto.getTreeId());
             if(tree == null ){System.out.println("쪽지 보내기 tree 주인 USERS_EMPTY_USER_ID" ); throw new BaseException(USERS_EMPTY_USER_ID);}
-        User writer = userRepository.findById(messages.getWriterId());
+        User writer = userRepository.findById(messageResponseDto.getWriterId());
             if(writer == null ){System.out.println("쪽지 보내기 작성자 USERS_EMPTY_USER_ID" ); throw new BaseException(USERS_EMPTY_USER_ID);}
         message.setTreeId(tree);
         message.setWriterId(writer); // 이거 로그인 기능 생기면 구현 예정 일단은 임시로 값 넘기기
-        message.setContent(messages.getContent());
-        message.setXPos(messages.getXPos());
-        message.setYPos((messages.getYPos()));
+        message.setContent(messageResponseDto.getContent());
+        message.setXPos(messageResponseDto.getXPos());
+        message.setYPos((messageResponseDto.getYPos()));
         message.setCreateDate(LocalDateTime.now());
         messageRepository.save(message);
         return new BaseResponse<>(message);

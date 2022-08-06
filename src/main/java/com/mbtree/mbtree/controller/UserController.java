@@ -4,11 +4,10 @@ import static com.mbtree.mbtree.config.BaseResponseStatus.USERS_EMPTY_USER_ID;
 
 import com.mbtree.mbtree.config.BaseException;
 import com.mbtree.mbtree.config.BaseResponse;
-import com.mbtree.mbtree.dto.User;
+import com.mbtree.mbtree.domain.user.User;
 
-import com.mbtree.mbtree.dto.Users;
-import com.mbtree.mbtree.repository.UserRepository;
-import java.time.LocalDate;
+import com.mbtree.mbtree.dto.UserResponseDto;
+import com.mbtree.mbtree.domain.user.UserRepository;
 import java.time.LocalDateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -27,7 +26,7 @@ public class UserController {
     private UserRepository userRepository;
 
     @PostMapping("/users/join") // 회원가입
-    public BaseResponse<Users> joinUser(@RequestBody Users user)  {
+    public BaseResponse<UserResponseDto> joinUser(@RequestBody UserResponseDto user)  {
         //username , userToken , email, character , location post로 받음
       //  try{
             System.out.println("유저" + user);

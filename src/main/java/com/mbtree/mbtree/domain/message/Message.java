@@ -1,5 +1,6 @@
-package com.mbtree.mbtree.dto;
+package com.mbtree.mbtree.domain.message;
 
+import com.mbtree.mbtree.domain.user.User;
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,20 +15,23 @@ import java.io.Serializable;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class User implements Serializable {
-
+public class Message implements Serializable {
     @Id // primary key
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
-    private String uuid;
-    private String name;
-    private String email;
-    private String mbti;
-    private String location;
-    private String token;
-    private int point;
+    private String content;
     private LocalDateTime createDate;
+    private int xPos;
+    private int yPos;
+    private int r; //read
+    private int paperStyle;
+    @ManyToOne
+    @JoinColumn(name = "writerId")
+    private User writerId;
 
+    @ManyToOne
+    @JoinColumn(name = "treeId")
+    private User treeId;
 
 }
