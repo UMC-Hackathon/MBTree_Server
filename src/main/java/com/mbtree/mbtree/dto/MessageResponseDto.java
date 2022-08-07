@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class Messages  {
+public class MessageResponseDto {
     private int writerId;
     private int treeId;
     private String content;

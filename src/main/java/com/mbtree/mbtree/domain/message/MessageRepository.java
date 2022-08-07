@@ -1,6 +1,6 @@
-package com.mbtree.mbtree.repository;
+package com.mbtree.mbtree.domain.message;
 
-import com.mbtree.mbtree.dto.Message;
+import com.mbtree.mbtree.domain.message.Message;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import com.mbtree.mbtree.config.BaseException;
