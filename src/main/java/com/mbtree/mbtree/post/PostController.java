@@ -47,7 +47,7 @@ public class PostController {
         return "";
     }
 
-    @GetMapping("/tree/msg")
+    @GetMapping("/tree/msg") //메세지 조회
     public String readPost(Model model , @RequestParam(value = "msgidx") int postID){
         Post post = postRepository.findById(postID); //
         System.out.println("포스트 내용 : "+ post.getContent()); // 이런식으로 읽을 수 있습니다.

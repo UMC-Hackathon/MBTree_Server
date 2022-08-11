@@ -24,6 +24,7 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation group: 'org.springframework.security.oauth', name: 'spring-security-oauth2', version: '2.3.5.RELEASE'
 
 	runtimeOnly 'mysql:mysql-connector-java' //mysql8
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
