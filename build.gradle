@@ -28,6 +28,8 @@ dependencies {
 
 	runtimeOnly 'mysql:mysql-connector-java' //mysql8
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	implementation 'com.google.code.gson:gson:2.8.7'
+
 }
 
 tasks.named('test') {
