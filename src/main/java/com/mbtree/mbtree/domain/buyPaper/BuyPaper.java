@@ -20,7 +20,7 @@ public class BuyPaper {
     @JoinColumn(name = "userId")
     private User userId;
 
-    private int paperId; //구입한 편지지
+    private int paperStyle; //구입한 편지지 스타일
 
     private LocalDateTime createDate; //생성시간
 
