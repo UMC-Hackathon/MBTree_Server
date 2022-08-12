@@ -4,6 +4,7 @@ import com.mbtree.mbtree.domain.user.User;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Builder
 @Data
@@ -20,5 +21,7 @@ public class BuyPaper {
     private User userId;
 
     private int paperId; //구입한 편지지
+
+    private LocalDateTime createDate; //생성시간
 
 }

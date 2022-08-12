@@ -11,6 +11,9 @@ import com.mbtree.mbtree.dto.BuyPaperResponseDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 import static com.mbtree.mbtree.config.BaseResponseStatus.USERS_EMPTY_USER_ID;
 
 @RestController
@@ -28,17 +31,19 @@ public class BuyPaperController {
 
         BuyPaper buyPaper = new BuyPaper();
         User user = userRepository.findById(buyPaperResponseDto.getUserId());
-        if(user == null ){System.out.println("편지지 구매자 USERS_EMPTY_USER_ID" ); throw new BaseException(USERS_EMPTY_USER_ID);}
+        if (user == null) {
+            System.out.println("편지지 구매자 USERS_EMPTY_USER_ID");
+            throw new BaseException(USERS_EMPTY_USER_ID);
+        }
         buyPaper.setUserId(user);
+
         int paperId = buyPaperResponseDto.getPaperId();
         buyPaper.setPaperId(paperId);
+
+        buyPaper.setCreateDate(LocalDateTime.now());
+
         buyPaperRepository.save(buyPaper);
         return new BaseResponse<>(buyPaper);
     }
 
-    //편지지 구매 내역
-//    @GetMapping("/buy")
-//    public String postBuyPaper(){
-//
-//    }
 }
