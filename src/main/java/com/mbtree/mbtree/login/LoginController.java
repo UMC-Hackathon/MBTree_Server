@@ -1,4 +1,4 @@
-package com.mbtree.mbtree.post;
+package com.mbtree.mbtree.login;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

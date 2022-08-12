@@ -1,4 +1,4 @@
-package com.mbtree.mbtree.post;
+package com.mbtree.mbtree.login;
 
 import com.fasterxml.jackson.databind.DatabindContext;
 import com.mbtree.mbtree.service.OAuthService;
