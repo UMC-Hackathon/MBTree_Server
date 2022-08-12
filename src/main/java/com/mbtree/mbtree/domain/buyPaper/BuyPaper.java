@@ -11,12 +11,14 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BuyPaper {
-    @Id // primary key
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int buyPaperId;
+    private int buyPaperId; //pk
 
     @ManyToOne
     @JoinColumn(name = "userId")
     private User userId;
+
+    private int paperId; //구입한 편지지
 
 }

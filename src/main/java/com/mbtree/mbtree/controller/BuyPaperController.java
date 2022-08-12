@@ -30,8 +30,9 @@ public class BuyPaperController {
         User user = userRepository.findById(buyPaperResponseDto.getUserId());
         if(user == null ){System.out.println("편지지 구매자 USERS_EMPTY_USER_ID" ); throw new BaseException(USERS_EMPTY_USER_ID);}
         buyPaper.setUserId(user);
+        int paperId = buyPaperResponseDto.getPaperId();
+        buyPaper.setPaperId(paperId);
         buyPaperRepository.save(buyPaper);
-
         return new BaseResponse<>(buyPaper);
     }
 

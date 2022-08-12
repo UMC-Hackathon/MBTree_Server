@@ -9,4 +9,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class BuyPaperResponseDto {
     private int userId;
+    private int paperId;
 }
