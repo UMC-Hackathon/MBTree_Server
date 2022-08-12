@@ -1,4 +1,4 @@
-package com.mbtree.mbtree.dto;
+package com.mbtree.mbtree.domain.user;
 
 import lombok.Data;
 

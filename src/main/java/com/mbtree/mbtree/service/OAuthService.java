@@ -57,7 +57,7 @@ public class OAuthService{
 
             access_Token = element.getAsJsonObject().get("access_token").getAsString();
             refresh_Token = element.getAsJsonObject().get("refresh_token").getAsString();
-
+            // DB 저장
             System.out.println("access_token : " + access_Token);
             System.out.println("refresh_token : " + refresh_Token);
 
@@ -103,10 +103,15 @@ public class OAuthService{
             JsonObject kakao_account = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
 
             String nickname = properties.getAsJsonObject().get("nickname").getAsString();
-            String email = kakao_account.getAsJsonObject().get("email").getAsString();
+//            String email = kakao_account.getAsJsonObject().get("email").getAsString();
+            String uuid = element.getAsJsonObject().get("id").getAsString();
+
 
             userInfo.put("nickname", nickname);
-            userInfo.put("email", email);
+//            userInfo.put("email", email);
+            userInfo.put("uuid", uuid);
+
+
 
         } catch (IOException e) {
             // TODO Auto-generated catch block

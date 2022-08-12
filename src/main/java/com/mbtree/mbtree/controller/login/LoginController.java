@@ -1,10 +1,10 @@
-package com.mbtree.mbtree.login;
+package com.mbtree.mbtree.controller.login;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mbtree.mbtree.config.SecurityProperties;
-import com.mbtree.mbtree.dto.KakaoProfile;
-import com.mbtree.mbtree.dto.OAuthToken;
+import com.mbtree.mbtree.domain.user.KakaoProfile;
+import com.mbtree.mbtree.domain.user.OAuthToken;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
