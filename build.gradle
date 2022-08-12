@@ -7,7 +7,9 @@ plugins {
 group = 'com.mbtree'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
+targetCompatibility = '11'
 
+compileJava.options.encoding = 'UTF-8'
 configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
@@ -19,17 +21,17 @@ repositories {
 }
 
 dependencies {
+	implementation 'org.jetbrains:annotations:19.0.0'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'junit:junit:4.13.1'
+	implementation 'junit:junit:4.13.1'
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	implementation group: 'org.springframework.security.oauth', name: 'spring-security-oauth2', version: '2.3.5.RELEASE'
-
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	runtimeOnly 'mysql:mysql-connector-java' //mysql8
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
-	implementation 'com.google.code.gson:gson:2.8.7'
-
 }
 
 tasks.named('test') {

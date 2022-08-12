@@ -1,5 +1,7 @@
-package com.mbtree.mbtree.dto;
+package com.mbtree.mbtree.domain.message;
 
+import com.mbtree.mbtree.domain.user.User;
+import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,20 +15,23 @@ import java.io.Serializable;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class Post implements Serializable {
+public class Message implements Serializable {
     @Id // primary key
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
     private String content;
-    private Float xPos;
-    private Float yPos;
-
+    private LocalDateTime createDate;
+    private int xPos;
+    private int yPos;
+    private int r; //read
+    private int paperStyle;
     @ManyToOne
     @JoinColumn(name = "writerId")
     private User writerId;
 
     @ManyToOne
-    @JoinColumn(name = "userId")
-    private User userId;
+    @JoinColumn(name = "treeId")
+    private User treeId;
 
 }

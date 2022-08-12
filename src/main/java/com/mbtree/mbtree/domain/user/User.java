@@ -1,5 +1,7 @@
-package com.mbtree.mbtree.dto;
+package com.mbtree.mbtree.domain.user;
 
+import com.mbtree.mbtree.config.BaseException;
+import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,9 +21,14 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
+    private String uuid;
     private String name;
-    private String userToken;
     private String email;
-    private String myers;
+    private String mbti;
     private String location;
+    private String token;
+    private int point;
+    private LocalDateTime createDate;
+
+
 }
