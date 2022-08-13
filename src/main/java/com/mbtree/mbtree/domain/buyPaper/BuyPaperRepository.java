@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface BuyPaperRepository extends JpaRepository<BuyPaper, Long> {
 
-    //User가 가진 편지지(paper_id) 목록 반환
-    @Query(value = "select paper_style from buy_paper where user_id=?;", nativeQuery = true)
+    //User가 가진 편지지(paper_id) 목록 오름차순으로 반환
+    @Query(value = "select paper_style from buy_paper where user_id=? order by paper_style asc;", nativeQuery = true)
     List<Integer> findByUserId(int userId) throws BaseException;
 }

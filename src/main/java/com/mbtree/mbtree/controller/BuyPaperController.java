@@ -16,6 +16,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.mbtree.mbtree.config.BaseResponseStatus.PAPER_ALREADY_BUY;
 import static com.mbtree.mbtree.config.BaseResponseStatus.USERS_EMPTY_USER_ID;
 
 @RestController
@@ -31,34 +32,52 @@ public class BuyPaperController {
     @PostMapping("/buy")
     public BaseResponse<BuyPaper> postBuyPaper(@RequestParam int userId, @RequestParam int paperStyle) throws BaseException {
 
-        BuyPaper buyPaper = new BuyPaper();
-        User user = userRepository.findById(userId);
-        if (user == null) {
-            System.out.println("편지지 구매자 USERS_EMPTY_USER_ID");
-            throw new BaseException(USERS_EMPTY_USER_ID);
+        try {
+            BuyPaper buyPaper = new BuyPaper();
+            User user = userRepository.findById(userId);
+
+            if (user == null) {
+                System.out.println("편지지 구매자 USERS_EMPTY_USER_ID");
+                throw new BaseException(USERS_EMPTY_USER_ID);
+            }
+
+            //이미 구매한 편지지인 경우 예외처리
+            List<Integer> userPaperList = buyPaperRepository.findByUserId(userId);
+            if (userPaperList.contains(paperStyle)) {
+                System.out.println("이미 구매한 편지지입니다.");
+                throw new BaseException(PAPER_ALREADY_BUY);
+            }
+
+            buyPaper.setUserId(user);
+            buyPaper.setPaperStyle(paperStyle);
+            buyPaper.setCreateDate(LocalDateTime.now());
+
+            buyPaperRepository.save(buyPaper);
+            return new BaseResponse<>(buyPaper);
+        }
+        catch(BaseException exception){
+            return new BaseResponse<>(exception.getStatus());
         }
 
-        buyPaper.setUserId(user);
-        buyPaper.setPaperStyle(paperStyle);
-        buyPaper.setCreateDate(LocalDateTime.now());
-
-        buyPaperRepository.save(buyPaper);
-        return new BaseResponse<>(buyPaper);
     }
 
-    //편지지 목록
+    //편지지 목록(구매내역)
     @GetMapping("/buy")
     public BaseResponse<List<Integer>> getBuyPaper(@RequestParam int userId) throws BaseException {
 
-        User user = userRepository.findById(userId);
-        if (user == null) {
-            System.out.println("편지지 구매자 USERS_EMPTY_USER_ID");
-            throw new BaseException(USERS_EMPTY_USER_ID);
+        //유저가 구매한 편지지 목록
+        try {
+            User user = userRepository.findById(userId);
+            if (user == null) {
+                System.out.println("편지지 구매자 USERS_EMPTY_USER_ID");
+                throw new BaseException(USERS_EMPTY_USER_ID);
+            }
+            List<Integer> userPaperList = buyPaperRepository.findByUserId(userId);
+            return new BaseResponse<>(userPaperList);
         }
-
-        //유저가 가진 편지지만 출력 -> 둘다 나오게 하면서 구분은 어떻게 구현..?
-        List<Integer> userPaperList = buyPaperRepository.findByUserId(userId);
-        return new BaseResponse<>(userPaperList);
+        catch(BaseException exception){
+            return new BaseResponse<>(exception.getStatus());
+        }
 
     }
 

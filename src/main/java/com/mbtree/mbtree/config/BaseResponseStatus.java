@@ -25,6 +25,10 @@ public enum BaseResponseStatus {
     MESSAGES_EMPTY_POST_ID(false, 2020,"유효하지 않은 MessageId 입니다."),
     MESSAGES_EMPTY_USER_MESSAGES(false, 2021,"user의 Message가 없습니다"),
 
+
+    //paper
+    PAPER_ALREADY_BUY(false, 2030, "이미 구입한 편지지입니다"),
+
     /**
      * 3000 : Response 오류
      */
