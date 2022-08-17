@@ -32,6 +32,10 @@ public enum BaseResponseStatus {
 
 
 
+
+    //paper
+    PAPER_ALREADY_BUY(false, 2030, "이미 구입한 편지지입니다"),
+
     /**
      * 3000 : Response 오류
      */
