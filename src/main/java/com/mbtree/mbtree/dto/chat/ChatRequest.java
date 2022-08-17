@@ -1,29 +1,24 @@
-package com.mbtree.mbtree.domain.chat;
+package com.mbtree.mbtree.dto.chat;
 
 import java.util.Objects;
 
-/**
- * @author zacconding
- * @Date 2018-08-22
- * @GitHub : https://github.com/zacscoding
- */
 public class ChatRequest {
 
-    private String sessionId;
+    private String userId;
 
     public ChatRequest() {
     }
 
     public ChatRequest(String sessionId) {
-        this.sessionId = sessionId;
+        this.userId = sessionId;
     }
 
-    public String getSessionId() {
-        return sessionId;
+    public String getUserId() {
+        return userId;
     }
 
     public void setSessionId(String sessionId) {
-        this.sessionId = sessionId;
+        this.userId = sessionId;
     }
 
     @Override
@@ -36,16 +31,16 @@ public class ChatRequest {
         }
 
         ChatRequest that = (ChatRequest) o;
-        return Objects.equals(this.sessionId, that.sessionId);
+        return Objects.equals(this.userId, that.userId);
     }
 
     @Override
     public int hashCode() {
-        return sessionId.hashCode();
+        return userId.hashCode();
     }
 
     @Override
     public String toString() {
-        return "ChatRequest{" + "sessionId='" + sessionId + '\'' + '}';
+        return "ChatRequest{" + "userId='" + userId + '\'' + '}';
     }
 }
