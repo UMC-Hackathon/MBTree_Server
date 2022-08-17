@@ -1,4 +1,4 @@
-package com.mbtree.mbtree.config;
+package com.mbtree.mbtree.config.chat;
 
 import java.util.concurrent.Executor;
 import org.springframework.context.annotation.Bean;

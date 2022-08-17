@@ -1,4 +1,4 @@
-package com.mbtree.mbtree.service;
+package com.mbtree.mbtree.service.chat;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
