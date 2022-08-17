@@ -29,6 +29,9 @@ public enum BaseResponseStatus {
     //paper
     PAPER_ALREADY_BUY(false, 2030, "이미 구입한 편지지입니다"),
 
+    //point
+    POINT_LACK(false, 2040, "포인트가 부족합니다"),
+
     /**
      * 3000 : Response 오류
      */
