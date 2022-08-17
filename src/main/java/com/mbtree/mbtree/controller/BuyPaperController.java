@@ -16,8 +16,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.mbtree.mbtree.config.BaseResponseStatus.PAPER_ALREADY_BUY;
-import static com.mbtree.mbtree.config.BaseResponseStatus.USERS_EMPTY_USER_ID;
+import static com.mbtree.mbtree.config.BaseResponseStatus.*;
 
 @RestController
 public class BuyPaperController {
@@ -44,13 +43,22 @@ public class BuyPaperController {
             //이미 구매한 편지지인 경우 예외처리
             List<Integer> userPaperList = buyPaperRepository.findByUserId(userId);
             if (userPaperList.contains(paperStyle)) {
-                System.out.println("이미 구매한 편지지입니다.");
+                System.out.println("이미 구매한 편지지입니다");
                 throw new BaseException(PAPER_ALREADY_BUY);
             }
 
             buyPaper.setUserId(user);
             buyPaper.setPaperStyle(paperStyle);
             buyPaper.setCreateDate(LocalDateTime.now());
+
+            //포인트 차감(임의로 한 편지지당 50포인트 차감으로 설정)
+            int point = user.getPoint();
+            point -= 50;
+            if(point<50){
+                System.out.println("포인트가 부족합니다");
+                throw new BaseException(POINT_LACK);
+            }
+            user.setPoint(point);
 
             buyPaperRepository.save(buyPaper);
             return new BaseResponse<>(buyPaper);
