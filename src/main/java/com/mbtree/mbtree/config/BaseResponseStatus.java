@@ -26,11 +26,12 @@ public enum BaseResponseStatus {
     MESSAGES_EMPTY_USER_MESSAGES(false, 2021,"user의 Message가 없습니다"),
     
     //chat
-    CHATROOM_EMPTY(false,2040,"Chatroom이 없습니다"),
-    CHATROOM_NO_AUTHORITY(false,2041,"유저는 이 채팅방에 접근 권한이 없습니다."),
-    CHATROOM_NO_QUIZ(false,2042,"더이상 퀴즈가 없습니다."),
+    CHATROOM_EMPTY(false,2050,"Chatroom이 없습니다"),
+    CHATROOM_NO_AUTHORITY(false,2051,"유저는 이 채팅방에 접근 권한이 없습니다."),
 
-
+    //quiz
+    CHATROOM_NO_QUIZ(false,2061,"더이상 퀴즈가 없습니다."),
+    N0_QUIZ_ANSWER(false,2060,"유저가 정답 입력을 안했습니다."),
 
 
     //paper

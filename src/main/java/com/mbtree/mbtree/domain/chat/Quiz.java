@@ -24,5 +24,4 @@ public class Quiz implements Serializable {
     private String keyword;
     private String answer1;
     private String answer2;
-
 }
