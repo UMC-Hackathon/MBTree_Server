@@ -47,8 +47,6 @@ public class MessageController {
         message.setTreeId(tree);
         message.setWriterId(writer); // 이거 로그인 기능 생기면 구현 예정 일단은 임시로 값 넘기기
         message.setContent(messageResponseDto.getContent());
-        message.setXPos(messageResponseDto.getXPos());
-        message.setYPos((messageResponseDto.getYPos()));
         message.setCreateDate(LocalDateTime.now());
         messageRepository.save(message);
         return new BaseResponse<>(message);
@@ -59,13 +57,14 @@ public class MessageController {
     }
 
 
-    @GetMapping("/tree") // 나무 조회
+   //나무
+   @GetMapping("/tree") // 나무 조회
     public BaseResponse<List<Message>> getTree(Model model, @RequestParam(value = "treeId") int treeID){
 
         try {
             User user = userRepository.findById(treeID);
                 if(user ==null ){System.out.println("나무조회 USERS_EMPTY_USER_ID" ); throw new BaseException(USERS_EMPTY_USER_ID);}
-            List<Message> messages = messageRepository.findByUserId(treeID);
+            List<Message> messages = messageRepository.findByTreeId(treeID);
                  if(messages == null ){System.out.println("MESSAGES_EMPTY_USER_MESSAGES" ); throw new BaseException(MESSAGES_EMPTY_USER_MESSAGES);}
             System.out.println("포스트 리스트 : " + messages); // 이런식으로 읽을 수 있습니다.
             return new BaseResponse<>(messages);
@@ -74,7 +73,36 @@ public class MessageController {
             return new BaseResponse<>(exception.getStatus());
         }
     }
+    //보관함  - 안읽음,읽음 : 이걸 그냥 파라미터로 보내서 함수 내에서 처리하면 코드가 가벼워질텐데 그럼 프론트 단에서 파라미터를 넘겨줘야함
+    // isRead 읽음 1 / 안읽음 0
+    @GetMapping("/tree/storage") // 보관함 조회
+    public BaseResponse<List<Message>> getTreeStorage(Model model, @RequestParam(value = "treeId") int treeID , @RequestParam(value = "isRead") int isRead){
 
+        try {
+            User user = userRepository.findById(treeID);
+            if(user ==null ){System.out.println("나무 보관함 조회 USERS_EMPTY_USER_ID" ); throw new BaseException(USERS_EMPTY_USER_ID);}
+
+            //보관함 쪽지 리스트 - 안읽은것 상위 11개 이후
+            if(isRead == 0)
+            {List<Message> messages = messageRepository.findUnReadMessageList(treeID);
+                if(messages == null ){System.out.println("MESSAGES_EMPTY_USER_MESSAGES" ); throw new BaseException(MESSAGES_EMPTY_USER_MESSAGES);}
+                System.out.println("보관함 쪽지 리스트 - 안읽은것 상위 11개 이후 : " + messages); // 이런식으로 읽을 수 있습니다.
+                return new BaseResponse<>(messages);}
+            //보관함 쪽지 리스트 - 읽은것 전체
+            else if (isRead == 1) {List<Message> messages = messageRepository.findReadMessageList(treeID);
+                if(messages == null ){System.out.println("MESSAGES_EMPTY_USER_MESSAGES" ); throw new BaseException(MESSAGES_EMPTY_USER_MESSAGES);}
+                System.out.println("보관함 쪽지 리스트 - 읽은것 전체 : " + messages); // 이런식으로 읽을 수 있습니다.
+                return new BaseResponse<>(messages);
+            }
+            else throw new BaseException(MESSAGES_EMPTY_USER_MESSAGES);
+
+
+
+        }
+        catch (BaseException exception){
+            return new BaseResponse<>(exception.getStatus());
+        }
+    }
     @GetMapping("/message") // 메세지 조회
     public BaseResponse<Message> getMessage(@RequestParam(value = "messageId") int messageId){
         System.out.println("메세지 조회 시작");
@@ -85,6 +113,8 @@ public class MessageController {
             //message 없는 경우
             if(message ==null ){System.out.println("MESSAGES_EMPTY_POST_ID" ); throw new BaseException(MESSAGES_EMPTY_POST_ID);}
             System.out.println("포스트 Controller message 정보 : " + message);
+            if(message.getIsRead()==0){System.out.println("메세지 아직 안읽음");message.setIsRead(1);}
+            messageRepository.save(message);
             return new BaseResponse<>(message);
         }
         catch (BaseException exception){

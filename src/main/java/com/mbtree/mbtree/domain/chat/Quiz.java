@@ -21,4 +21,8 @@ public class Quiz implements Serializable {
     @Column(name = "id")
     private int id;
     private String quiz;
+    private String keyword;
+    private String answer1;
+    private String answer2;
+
 }
