@@ -86,12 +86,12 @@ public class MessageController {
             if(isRead == 0)
             {List<Message> messages = messageRepository.findUnReadMessageList(treeID);
                 if(messages == null ){System.out.println("MESSAGES_EMPTY_USER_MESSAGES" ); throw new BaseException(MESSAGES_EMPTY_USER_MESSAGES);}
-                System.out.println("보관함 쪽지 리스트 - 안읽은것 상위 11개 이후 : " + messages); // 이런식으로 읽을 수 있습니다.
+                System.out.println("보관함 쪽지 리스트 - 안읽은것 상위 11개 이후 : " + messages);
                 return new BaseResponse<>(messages);}
             //보관함 쪽지 리스트 - 읽은것 전체
             else if (isRead == 1) {List<Message> messages = messageRepository.findReadMessageList(treeID);
                 if(messages == null ){System.out.println("MESSAGES_EMPTY_USER_MESSAGES" ); throw new BaseException(MESSAGES_EMPTY_USER_MESSAGES);}
-                System.out.println("보관함 쪽지 리스트 - 읽은것 전체 : " + messages); // 이런식으로 읽을 수 있습니다.
+                System.out.println("보관함 쪽지 리스트 - 읽은것 전체 : " + messages);
                 return new BaseResponse<>(messages);
             }
             else throw new BaseException(MESSAGES_EMPTY_USER_MESSAGES);
