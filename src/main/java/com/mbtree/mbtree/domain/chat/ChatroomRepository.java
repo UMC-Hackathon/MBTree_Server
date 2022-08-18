@@ -14,7 +14,7 @@ public interface ChatroomRepository extends JpaRepository<Chatroom, Long> {
     @Query(value = "select * from chatroom where (user1 = ?1 and user2 = ?2 ) or (user1 = ?2 and user2 = ?1);" , nativeQuery = true)
     Chatroom findByUser(String user1, String user2);
 
-    @Query(value = "select * from chatroom where (user1 = ?1 or user2 = ?2);" ,nativeQuery = true)
+    @Query(value = "select * from chatroom where (user1 = ?1 and view1 != 1) or (user2 = ?2 and view2 != 1);" ,nativeQuery = true)
     List<Chatroom> findByOneUser(String user1, String user2) throws BaseException;
 
     List<String> findQuizById(int id);
