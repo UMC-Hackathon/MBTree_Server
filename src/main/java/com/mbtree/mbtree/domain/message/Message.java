@@ -22,9 +22,7 @@ public class Message implements Serializable {
     private int id;
     private String content;
     private LocalDateTime createDate;
-    private int xPos;
-    private int yPos;
-    private int r; //read
+    private int isRead; //read 1
     private int paperStyle;
     @ManyToOne
     @JoinColumn(name = "writerId")
