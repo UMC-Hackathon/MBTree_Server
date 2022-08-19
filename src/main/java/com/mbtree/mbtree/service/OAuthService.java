@@ -3,6 +3,10 @@ package com.mbtree.mbtree.service;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonElement;
+import com.mbtree.mbtree.domain.user.User;
+import com.mbtree.mbtree.domain.user.UserRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
@@ -12,7 +16,10 @@ import java.net.URL;
 import java.util.HashMap;
 
 @Service
+@RequiredArgsConstructor
 public class OAuthService{
+
+    private final UserRepository userRepository;
 
     public static String getKakaoAccessToken(String code) {
         String access_Token = "";
@@ -57,7 +64,7 @@ public class OAuthService{
 
             access_Token = element.getAsJsonObject().get("access_token").getAsString();
             refresh_Token = element.getAsJsonObject().get("refresh_token").getAsString();
-            // DB 저장
+
             System.out.println("access_token : " + access_Token);
             System.out.println("refresh_token : " + refresh_Token);
 
@@ -70,7 +77,7 @@ public class OAuthService{
         return access_Token;
     }
 //GetUserInfo
-    public static HashMap<String, Object> getUserInfo(String access_Token) {
+    public HashMap<String, Object> getUserInfo(String access_Token) {
 
         //    요청하는 클라이언트마다 가진 정보가 다를 수 있기에 HashMap타입으로 선언
         HashMap<String, Object> userInfo = new HashMap<>();
@@ -118,8 +125,26 @@ public class OAuthService{
             e.printStackTrace();
         }
 
+        String uuid = (String) userInfo.get("uuid");
+        //userRepository에 uuid가 있는지 확인하고, 있으면 넘기고 없으면 저장
+
+        User user = new User();
+        if(userRepository.findByUuid(uuid) == null) {
+            user.setUuid((String) userInfo.get("uuid"));
+            user.setName((String) userInfo.get("nickname"));
+            user.setToken(access_Token);
+            userRepository.save(user);
+        }else{
+            user = userRepository.findByUuid(uuid);
+            user.setToken(access_Token);
+            userRepository.save(user);
+        }
+
         return userInfo;
     }
+
+
+
 
 
 }
