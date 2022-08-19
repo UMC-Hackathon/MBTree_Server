@@ -24,6 +24,21 @@ public enum BaseResponseStatus {
     //message
     MESSAGES_EMPTY_POST_ID(false, 2020,"유효하지 않은 MessageId 입니다."),
     MESSAGES_EMPTY_USER_MESSAGES(false, 2021,"user의 Message가 없습니다"),
+    
+    //chat
+    CHATROOM_EMPTY(false,2050,"Chatroom이 없습니다"),
+    CHATROOM_NO_AUTHORITY(false,2051,"유저는 이 채팅방에 접근 권한이 없습니다."),
+
+    //quiz
+    CHATROOM_NO_QUIZ(false,2061,"더이상 퀴즈가 없습니다."),
+    N0_QUIZ_ANSWER(false,2060,"유저가 정답 입력을 안했습니다."),
+
+
+    //paper
+    PAPER_ALREADY_BUY(false, 2030, "이미 구입한 편지지입니다"),
+
+    //point
+    POINT_LACK(false, 2040, "포인트가 부족합니다"),
 
     /**
      * 3000 : Response 오류

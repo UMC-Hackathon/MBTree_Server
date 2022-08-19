@@ -2,17 +2,18 @@ $(function () {
     var ChatManager = (function () {
         function ChatManager() {
         }
-
         ChatManager.textarea = $('#chat-content');
         ChatManager.socket = null;
         ChatManager.stompClient = null;
-        ChatManager.sessionId = null;
+        ChatManager.userId = null;
         ChatManager.chatRoomId = null;
         ChatManager.joinInterval = null;
 
         ChatManager.join = function () {
+            var userId = document.getElementById("chat-userId").value;
+
             $.ajax({
-                url       : 'join',
+                url       : 'chat/join?userId='+userId,
                 headers   : {
                     "Content-Type": "application/json"
                 },
@@ -31,7 +32,7 @@ $(function () {
 
                     clearInterval(ChatManager.joinInterval);
                     if (chatResponse.responseResult == 'SUCCESS') {
-                        ChatManager.sessionId = chatResponse.sessionId;
+                        ChatManager.userId = chatResponse.userId;
                         ChatManager.chatRoomId = chatResponse.chatRoomId;
                         ChatManager.updateTemplate('chat');
                         ChatManager.updateText('>> Connected anonymous user :)\n', false);
@@ -60,8 +61,10 @@ $(function () {
         };
 
         ChatManager.cancel = function () {
+            var userId = document.getElementById("chat-userId").value;
+
             $.ajax({
-                url     : 'cancel',
+                url       : 'chat/cancel?userId='+ userId,
                 headers : {
                     "Content-Type": "application/json"
                 },
@@ -102,13 +105,15 @@ $(function () {
         ChatManager.sendMessage = function () {
             console.log('Check.. >>\n', ChatManager.stompClient);
             console.log('send message.. >> ');
+            var userId = document.getElementById("chat-userId").value;
+
             var $chatTarget = $('#chat-message-input');
             var message = $chatTarget.val();
             $chatTarget.val('');
 
             var payload = {
                 messageType    : 'CHAT',
-                senderSessionId: ChatManager.sessionId,
+                userId: userId,
                 message        : message
             };
 
@@ -120,12 +125,13 @@ $(function () {
                 console.log('>> success to receive message\n', resultObj.body);
                 var result = JSON.parse(resultObj.body);
                 var message = '';
+                var userId = document.getElementById("chat-userId").value;
 
                 if (result.messageType == 'CHAT') {
-                    if (result.senderSessionId === ChatManager.sessionId) {
+                    if (result.userId === userId) {
                         message += '[Me] : ';
                     } else {
-                        message += '[Anonymous] : ';
+                        message += '['+result.userId+'] : ';
                     }
 
                     message += result.message + '\n';

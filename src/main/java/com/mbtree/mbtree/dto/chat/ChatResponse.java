@@ -1,31 +1,26 @@
-package com.mbtree.mbtree.domain.chat;
+package com.mbtree.mbtree.dto.chat;
 
-/**
- * @author zacconding
- * @Date 2018-08-22
- * @GitHub : https://github.com/zacscoding
- */
 public class ChatResponse {
 
     private ResponseResult responseResult;
     private String chatRoomId;
-    private String sessionId;
+    private String userId;
 
     public ChatResponse() {
     }
 
-    public ChatResponse(ResponseResult responseResult, String chatRoomId, String sessionId) {
+    public ChatResponse(ResponseResult responseResult, String chatRoomId, String userId) {
         this.responseResult = responseResult;
         this.chatRoomId = chatRoomId;
-        this.sessionId = sessionId;
+        this.userId = userId;
     }
 
-    public String getSessionId() {
-        return sessionId;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setSessionId(String sessionId) {
-        this.sessionId = sessionId;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getChatRoomId() {
@@ -46,10 +41,10 @@ public class ChatResponse {
 
     @Override
     public String toString() {
-        return "ChatResponse{" + "responseResult=" + responseResult + ", chatRoomId='" + chatRoomId + '\'' + ", sessionId='" + sessionId + '\'' + '}';
+        return "ChatResponse{" + "responseResult=" + responseResult + ", chatRoomId='" + chatRoomId + '\'' + ", userId='" + userId + '\'' + '}';
     }
 
     public enum ResponseResult {
-        SUCCESS, CANCEL, TIMEOUT;
+        SUCCESS, CANCEL, TIMEOUT, QUIT;
     }
 }
