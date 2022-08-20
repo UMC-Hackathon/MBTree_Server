@@ -315,8 +315,6 @@ public class ChatController {
         }
 
         if (chatMessage.getMessageType() == MessageType.CHAT) {
-            chatService.sendMessage(chatRoomId, chatMessage);
-
             Chatroom chatroom = chatroomRepository.findById(Integer.parseInt(chatRoomId));
             chatroom.setView1(0);
             chatroom.setView2(0);
@@ -326,6 +324,7 @@ public class ChatController {
             chat.setUserId(userRepository.findById(Integer.parseInt(chatMessage.getUserId())));
             chat.setRoomId(chatRoomId);
             chatRepository.save(chat);
+            chatService.sendMessage(chatRoomId, chatMessage);
         }
     }
     // -- tag :: websocket stomp

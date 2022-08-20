@@ -114,7 +114,7 @@ $(function () {
             var payload = {
                 messageType    : 'CHAT',
                 userId: userId,
-                message        : message
+                message: message
             };
 
             ChatManager.stompClient.send('/app/chat.message/' + ChatManager.chatRoomId, {}, JSON.stringify(payload));
