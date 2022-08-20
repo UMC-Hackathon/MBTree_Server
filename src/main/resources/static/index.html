@@ -1,0 +1,742 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" type="text/css" href="css/reset.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"> 
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+#wrap{
+    display:flex;
+    flex-direction: column;
+    width:100%;
+    height: 100vh;
+    margin:0 auto;
+}
+
+/*모바일용 css*/
+.container{
+    display:block;
+}
+
+/* 헤더 영역 CSS */
+
+.headerSection{
+position: fixed;
+width: 100%;
+/* height:100px; */
+background-color: hsla(0,0%,100%,.9);
+z-index:1;
+}
+
+.header{
+padding: 20px 5%;
+/* height: 74px; */
+}
+
+.header .down{
+    float:right;
+    margin-top:-0.3125rem;
+}
+
+
+/*디스플레이 영역*/
+.display-section{
+padding: 100px 0px 0px 0px;
+display: inline-flex;
+flex-direction: column;
+align-items: center;
+width: 100%;
+background: linear-gradient(146.94deg, #D5E1DC 2.49%, #D2EBE1 98.7%);
+}
+
+.display-section .sec-tit{
+padding: 30px 0px 0px 30px;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 800;
+font-size: 1.5rem;
+line-height: 2.1875rem;
+color: #18674B;
+}
+
+.display-section img{
+    justify-items: center;
+/* padding: 0 2.8125rem; */
+width: 390px;
+background: url(phone.png);
+
+}
+
+/*mbtree 영역*/
+.tree-section .tree-text{
+margin-top:42px;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 1.5rem;
+line-height: 1.8125rem;
+text-align: center;
+color: #000000;
+}
+
+.tree-section .tree-text2{
+margin-top:18px;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 300;
+font-size: 0.875rem;
+line-height: 1.0625rem;
+text-align: center;
+color: #767676;
+}
+
+.tree-section .treeImg img{
+margin-top:42px;
+align-items: center;
+width:100%;
+background: url(tree1.png);
+}
+
+/*랜덤 채팅 영역*/
+.chat-section .chat-text{
+margin-top:59px;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 1.5rem;
+line-height: 1.8125rem;
+text-align: center;
+color: #000000;
+}
+
+.chat-section .chat-text2{
+margin-top:18px;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 300;
+font-size: 0.875rem;
+line-height: 1.0625rem;
+text-align: center;
+color: #909090;
+margin-bottom:42px;
+}
+
+.말풍선m-section{
+display: flex;
+flex-direction: column;
+background: #C2E2D5;
+}
+
+
+.말풍선m-section .말풍선m2-section{
+display: inline-flex;
+flex-direction: column;
+align-items: center;
+
+padding: 30px 30px 30px 30px;
+}
+
+.말풍선m2-section > .말풍선m1{
+padding: 0px 0px 30px 150px;
+/* width: 9.375rem; */
+height: 50px;
+}
+
+.말풍선m2-section > .말풍선m2{
+padding: 0px 150px 0px 0px;
+/* width: 150px; */
+height: 50px;
+
+}
+
+.말풍선m2-section > .말풍선m3{
+padding: 30px 0px 0px 150px;
+/* width: 9.375rem; */
+height: 50px;
+}
+
+.말풍선m2-section > .말풍선m4{
+padding: 30px 0px 0px 0px;
+width: 312px;
+}
+
+.말풍선pc-section{
+    display:none;
+}
+
+/*포인트 제도*/
+
+.point-section .point-text{
+margin-top:59px;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 1.5rem;
+line-height: 1.8125rem;
+text-align: center;
+text-align: center;
+color: #000000;
+}
+
+.point-section .point-text2{
+margin-top:18px;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 300;
+font-size: 0.875rem;
+line-height: 1.0625rem;
+text-align: center;
+color: #909090;
+margin-bottom:42px;
+}
+
+/*편지지 영역*/
+.pic1-section{
+    position:flex;
+    width: 100%;
+    background: #EAEAEA;
+}
+
+.slide_wrapper1{
+position: relative;
+align-items: center;
+width: 360px;
+margin: 0 auto;
+overflow: hidden;
+height: 200px;
+}
+
+.li{
+    list-style: none;
+}
+
+.slides1{
+position: absolute;
+left: 0; top: 30px;
+width: 1010px;
+transition: left 0.5s ease-out;
+}
+
+.slides1 li{
+float: left;
+width: 100px;
+height: 140px;
+}
+
+.slides1 li:not(:last-child){
+float: left;
+margin-right: 30px;
+}
+
+.button1 .controls1{
+    position: relative;
+    text-align: center;
+    margin-top: 30px;
+
+}
+.controls1 span{
+    position: absolute;
+    background: #333;
+    color: #fff;
+    padding: 10px 20px;
+    margin: 0 10px;
+}
+
+.controls1 span.prev1{right: calc(50% + 50px);}
+.controls1 span.next1{left:calc(50% + 50px);}
+
+/* .pic2-section{
+    display: none;
+} */
+
+div .foot{
+    height: 500px;
+}
+
+/* 하단 다운로드 버튼*/
+button {
+    box-sizing: border-box;
+    cursor: pointer;
+    border: 0;
+    background-color: transparent;
+    -webkit-appearance: button;
+    outline: 0;
+    text-transform: none;
+    overflow: visible;
+}
+
+.downBtn{
+    display: block;
+    position: fixed;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 420px;
+    width: 90%;
+    cursor: pointer;
+    margin: 0 auto;
+    background: #333;
+    box-shadow: 0 4px 12px rgb(0 0 0 / 16%), 4px 8px 28px rgb(0 0 0 / 8%);
+    border-radius: 60px;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    line-height: 24px;
+    font-size: 24px;
+    min-height: 56px;
+    font-family: 'Inter';
+    font-style: normal;
+}
+
+div .foot{
+    display: block;
+    height: 500px;
+}
+
+/* PC용 CSS */
+@media all and (min-width:1132px){
+/* 헤더 영역 CSS */
+.headerSection{
+    position: fixed;
+    width: 100%;
+    height:74px;
+    background-color: hsla(0,0%,100%,.9);
+    z-index:1;
+}
+.header{
+position:static;
+padding:15px 25px;
+}
+
+.logo{
+    float:left;
+    height:40px; 
+    width:30%;
+}
+
+.down{
+    float:right;
+    height:48px; 
+    width:30%;
+    margin-top:-4px;
+}
+
+/* 디스플레이 영역 CSS */
+.display-section{
+    z-index:2;
+}
+.display-section article{
+display: inline-flex;
+flex-direction: column;
+width: 100%;
+padding-top: 45.31%;
+
+background: linear-gradient(146.94deg, #D5E1DC 2.49%, #D2EBE1 98.7%);
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.display-section .sec-tit{
+display: flex;
+position: absolute;
+text-align:left;
+width: 600px;
+height: 154px;
+left: 13.5%;
+top: 164px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 3.35vw;
+line-height: 1.2;  
+
+color: #18674B;
+}
+
+.display-section img{
+display: flex;
+position: absolute;
+width: 61.8%;
+height: auto;
+left: 38.22%;
+top: 86px;
+padding-left: 0px;
+}
+
+/* mbtree 영역 */
+.tree-section{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+
+.tree-section .tree-text{
+margin-top: 116px;
+text-align: center;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 40px;
+line-height: 50px;
+color: #000000;
+} 
+
+.tree-section .tree-text2{
+margin-top:42px;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 300;
+font-size: 24px;
+line-height: 29px;
+text-align: center;
+color: #767676;
+}
+
+.tree-section .treeImg{
+margin-top:115px;
+width: 40.88%;
+height: auto; 
+}
+
+/* 랜덤 채팅 영역 */
+.chat-section {
+    display: flex;
+    justify-content: center;
+}
+.chat-section .chat-text{
+margin-top: 119px;
+
+text-align: center;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 40px;
+line-height: 50px;
+
+color: #000000;
+}
+
+.chat-section .chat-text2{
+margin-top:42px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 300;
+font-size: 24px;
+line-height: 29px;
+
+text-align: center;
+color: #767676;
+margin-bottom: 119px;
+}
+
+.말풍선m-section{
+    display:none;
+}
+
+.말풍선pc-section{
+width: 100%;
+height:938px;
+background: #C2E2D5;
+display:flex;
+flex-direction: column;
+}
+
+.말풍선pc-section .말풍선pc2-section{
+display: inline-flex;
+flex-direction: column;
+align-items: center;
+padding: 30px 30px 30px 30px;
+}
+
+.말풍선pc2-section > .말풍선pc1{
+padding: 41px 0px 0px 510px;
+width: 400px;
+height: 89px;
+}
+
+.말풍선pc2-section > .말풍선pc2{
+padding: 49px 440px 0px 0px;
+width: 470px;
+height: 90px;
+
+}
+
+.말풍선pc2-section > .말풍선pc3{
+padding: 46px 0px 0px 570px;
+width: 340px;
+height: 90px;
+}
+
+.말풍선pc2-section > .말풍선pc4{
+padding: 62px 0px 0px 0px;
+width: 910px;
+height: 350px;
+/* width: 312px; */
+}
+
+/*포인트 제도*/
+.point-section {
+    display: flex;
+    justify-content: center;
+}
+.point-section .point-text{
+margin-top: 130px;
+
+text-align: center;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 40px;
+line-height: 50px;
+
+color: #000000;
+}
+
+.point-section .point-text2{
+    margin-top:42px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 300;
+font-size: 24px;
+line-height: 29px;
+
+text-align: center;
+color: #767676;
+margin-bottom: 126px;
+}
+
+/*편지지 영역*/
+.pic1-section{
+    display:none;
+}
+
+.pic2-section{
+    position:flex;
+    width: 100%;
+    background: #EAEAEA;
+}
+
+.slide_wrapper{
+position: relative;
+align-items: center;
+width: 960px;
+margin: 0 auto;
+height: 420px;
+overflow: hidden;
+height: 480px;
+}
+
+.li{
+    list-style: none;
+}
+
+.slides{
+position: absolute;
+left: 0; top: 30px;
+width: 2670px;
+transition: left 0.5s ease-out;
+}
+
+.slides li{
+float: left;
+width: 300px;
+height: 420px;
+}
+
+.slides li:not(:last-child){
+float: left;
+margin-right: 30px;
+}
+
+.button .controls{
+    position: relative;
+    text-align: center;
+    margin-top: 50px;
+
+}
+.controls span{
+    position: absolute;
+    background: #333;
+    color: #fff;
+    padding: 10px 20px;
+    margin: 0 10px;
+}
+
+.controls span.prev{right: calc(50% + 50px);}
+.controls span.next{left:calc(50% + 50px);}
+
+/* 하단 다운로드 버튼*/
+button {
+    box-sizing: border-box;
+    cursor: pointer;
+    border: 0;
+    background-color: transparent;
+    -webkit-appearance: button;
+    outline: 0;
+    text-transform: none;
+    overflow: visible;
+}
+.downBtn{
+    display: block;
+    position: fixed;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 420px;
+    width: 90%;
+    cursor: pointer;
+    margin: 0 auto;
+    background: #333;
+    box-shadow: 0 4px 12px rgb(0 0 0 / 16%), 4px 8px 28px rgb(0 0 0 / 8%);
+    border-radius: 60px;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    line-height: 24px;
+    font-size: 24px;
+    min-height: 56px;
+    font-family: 'Inter';
+    font-style: normal;
+}
+
+div .foot{
+    display: block;
+    height: 280px;
+}
+}
+</style>
+<script>
+
+</script>
+</head>
+<body>
+    <div id="wrap">
+        <section class="headerSection">
+            <header class="header cfixed">
+                <img src="img/mbtree icon 3.svg" height=40px width=30% left=389px top=100px>
+                <img class="down" src="img/download.svg" height=48px width=30% left=389px top=100px>
+            </header>
+        </section>
+        
+        <section class="content">
+            <section class="display-section">
+                <article>
+                    <div class="container">
+                        <h2 class="sec-tit" data-aos="fade-up">엠비트리로<br>주변인과 더 가깝게</h2>
+                    </div>
+                    <div class="phoneImg">
+                        <img src="img/phone.png">
+                    </div>
+                </article>
+            </section>
+            <section class="tree-section">
+                <div class="container">
+                    <p class="tree-text">#mbtree_쪽지_열매</p>
+                    <p class="tree-text2"> 친구 나무에 MBTI 익명 편지를 달고<br>나에게 온 편지를 읽어보세요!</p>
+                </div>
+                <div class="treeImg">
+                    <img src="img/tree1.png">
+                </div>
+            </section>
+            <section class="chat-section">
+                <div class="container">
+                    <p class="chat-text">#mbtree_랜덤_채팅</p>
+                    <p class="chat-text2">카카오톡 인증으로 안전하게<br>우리동네 MBTI 랜덤채팅을 즐겨보세요!</p>
+                </div>
+            </section>
+            <div class="말풍선m-section">
+                <div class="말풍선m2-section" data-aos="fade-up">
+                    <img class="말풍선m1" src="img/small 말풍선1.png">
+                    <img class="말풍선m2" src="img/small 말풍선2.png">
+                    <img class="말풍선m3" src="img/small 말풍선3.png">
+                    <img class="말풍선m4" src="img/small 질문.png">
+                </div>
+            </div>
+            <div class="말풍선pc-section">
+                <div class="말풍선pc2-section" data-aos="fade-up">
+                    <img class="말풍선pc1" src="img/web말풍선1.png">
+                    <img class="말풍선pc2" src="img/web말풍선2.png">
+                    <img class="말풍선pc3" src="img/web말풍선3.png">
+                    <img class="말풍선pc4" src="img/질문(web).png">
+                </div>
+            </div>
+            <section class="point-section">
+                <div class="container">
+                    <p class="point-text">#mbtree_포인트</p>
+                    <p class="point-text2">mbtree를 즐기면서 얻은 포인트로<br>다양한 편지지를 구매해보세요!</p>
+                </div>
+            </section>
+                <section class="pic1-section">
+                    <div class="slide_wrapper1">
+                        <ul class="slides1">
+                            <li><img src="img/편지지1_mb.png"></li>
+                            <li><img src="img/편지지2_mb.png"></li>
+                            <li><img src="img/편지지8_mb.png"></li>
+                            <li><img src="img/편지지3_mb.png"></li>
+                            <li><img src="img/편지지4_mb.png"></li>
+                            <li><img src="img/편지지5_mb.png"></li>
+                            <li><img src="img/편지지6_mb.png"></li>
+                            <li><img src="img/편지지7_mb.png"></li>
+                        </ul>
+                    </div>
+                    <div class="button1">
+                    <p class="controls1">
+                        <span class="prev1">prev</span>
+                        <span class="next1">next</span>
+                    </p>
+                    </div>
+                </section>
+                
+                    <section class="pic2-section" data-aos="fade-up">
+                        <div class="slide_wrapper">
+                            <ul class="slides">
+                                <li><img src="img/편지지1 cloud.png"></li>
+                                <li><img src="img/편지지2 ground.png"></li>
+                                <li><img src="img/편지지8.png"></li>
+                                <li><img src="img/편지지3.png"></li>
+                                <li><img src="img/편지지4.png"></li>
+                                <li><img src="img/편지지5 sea.png"></li>
+                                <li><img src="img/편지지6.png"></li>
+                                <li><img src="img/편지지7.png"></li>
+                            </ul>
+                        </div>
+                        <div class="button">
+                        <p class="controls">
+                            <span class="prev">prev</span>
+                            <span class="next">next</span>
+                        </p>
+                        </div>
+                    </section> 
+                
+            </div>
+        </section>
+        <button class="downBtn">
+            <b>앱 다운로드하기</b>
+        </button>
+        <footer class="footer">
+            <div class="foot">
+            </div>
+        </footer>
+    </div>
+    <script src="js/letter_m.js"></script>
+    <script src="js/letter_pc.js"></script>
+    <script>
+        AOS.init({
+          duration: 3000,
+        });
+    </script>
+</body>
+</html>
