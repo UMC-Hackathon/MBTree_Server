@@ -14,9 +14,4 @@ public class WebController {
         return "main.html";
     }
 
-    @RequestMapping("/chat")
-    public String chatPage(){
-        return "chat.html";
-    }
-
 }
