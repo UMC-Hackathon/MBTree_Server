@@ -1,9 +1,11 @@
+/* @charset utf-8; */
 
 /* 웹폰트 CSS */
+@import url('https://fonts.googleapis.com/css?family=Montserrat|PT+Serif');
 
- 
 /* CSS 초기화 */
-html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video{
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video{
 margin:0;
 padding:0;
 border:0;
@@ -14,10 +16,10 @@ background:transparent;
 }
 
 body{
-line-height:1;
+    font-family: 'Roboto', sans-serif;
 }
 
-article,aside,details,figcaption,figure, footer,header,hgroup,menu,nav,section{
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{ 
 display:block;
 }
 
@@ -29,9 +31,10 @@ a{
 margin:0;
 padding:0;
 font-size:100%;
-vertical-align:baseline;
-background:transparent;
 text-decoration:none;
+vertical-align:baseline;
+color:#fff;
+background:transparent;
 }
 
 img{
@@ -39,21 +42,38 @@ vertical-align:top;
 }
 
 hr{
-display:block;
+display:none;
 height:2px;
 border:0;
 margin:0;
 padding:0;
 }
 
-input, textarea{
+table{
+border-collapse:collapse;
+border-spacing:0;
+}
+
+input,textarea{
 width:100%;
 margin:0;
 padding:0;
 border:0;
-
-vertical-align:top;
-border-radius:0;
+border-bottom:1px solid #757575;
+color:#3f51b5;
+font-family:Montserrat;
+font-size:12px;
 box-sizing:content-box;
+vertical-align:top;
 appearance:none;
+border-radius:0;
 }
+
+::-moz-input-placeholder{
+color:#3f51b5;
+}
+
+::-webkit-input-placeholder {
+color:#3f51b5;
+}
+

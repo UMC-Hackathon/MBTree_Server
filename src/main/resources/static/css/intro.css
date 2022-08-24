@@ -1,0 +1,643 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+#wrap{
+    display:flex;
+    flex-direction: column;
+    width:100%;
+    height: 100vh;
+    margin:0 auto;
+}
+
+/*모바일용 css*/
+.container{
+    display:block;
+}
+
+/* 헤더 영역 CSS */
+
+.headerSection{
+position: fixed;
+width: 100%;
+/* height:100px; */
+background-color: hsla(0,0%,100%,.9);
+z-index:1;
+}
+
+.header{
+padding: 20px 5%;
+/* height: 74px; */
+}
+
+.header .down{
+    float:right;
+    margin-top:-0.3125rem;
+}
+
+
+/*디스플레이 영역*/
+.display-section{
+padding: 100px 0px 0px 0px;
+display: inline-flex;
+flex-direction: column;
+align-items: center;
+width: 100%;
+background: linear-gradient(146.94deg, #D5E1DC 2.49%, #D2EBE1 98.7%);
+}
+
+.display-section .sec-tit{
+padding: 30px 0px 0px 30px;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 800;
+font-size: 1.5rem;
+line-height: 2.1875rem;
+color: #18674B;
+}
+
+.display-section img{
+    justify-items: center;
+/* padding: 0 2.8125rem; */
+width: 390px;
+background: url(phone.png);
+
+}
+
+/*mbtree 영역*/
+.tree-section{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.tree-section .tree-text{
+margin-top:67px;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 1.5rem;
+line-height: 1.8125rem;
+text-align: center;
+color: #000000;
+}
+
+.tree-section .tree-text2{
+margin-top:18px;
+margin-bottom:42px;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 300;
+font-size: 0.875rem;
+line-height: 1.0625rem;
+text-align: center;
+color: #767676;
+}
+
+.tree2-section{
+display: flex;
+flex-direction: row;
+justify-content: center;
+}
+
+.tree2-section .letterImg{
+    justify-content: center;
+    padding: 280px 200px 130px 150px;
+    background: url(../img/tree2.png);
+    background-size: cover;
+    width: 80px;
+    height: auto;
+}
+
+.tree2-section .letterImg img{
+    padding: 0px 30px 0px 50px;
+    width: 100%;
+    height: auto;
+}
+
+/*랜덤 채팅 영역*/
+.chat-section .chat-text{
+margin-top:67px;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 1.5rem;
+line-height: 1.8125rem;
+text-align: center;
+color: #000000;
+}
+
+.chat-section .chat-text2{
+margin-top:18px;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 300;
+font-size: 0.875rem;
+line-height: 1.0625rem;
+text-align: center;
+color: #909090;
+margin-bottom:42px;
+}
+
+.말풍선m-section{
+display: flex;
+flex-direction: column;
+background: #C2E2D5;
+}
+
+
+.말풍선m-section .말풍선m2-section{
+display: inline-flex;
+flex-direction: column;
+align-items: center;
+
+padding: 30px 30px 30px 30px;
+}
+
+.말풍선m2-section > .말풍선m1{
+padding: 0px 0px 30px 150px;
+/* width: 9.375rem; */
+height: 50px;
+}
+
+.말풍선m2-section > .말풍선m2{
+padding: 0px 150px 0px 0px;
+/* width: 150px; */
+height: 50px;
+
+}
+
+.말풍선m2-section > .말풍선m3{
+padding: 30px 0px 0px 150px;
+/* width: 9.375rem; */
+height: 50px;
+}
+
+.말풍선m2-section > .말풍선m4{
+padding: 30px 0px 0px 0px;
+width: 312px;
+}
+
+.말풍선pc-section{
+    display:none;
+}
+
+/*포인트 제도*/
+
+.point-section .point-text{
+margin-top:67px;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 1.5rem;
+line-height: 1.8125rem;
+text-align: center;
+text-align: center;
+color: #000000;
+}
+
+.point-section .point-text2{
+margin-top:18px;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 300;
+font-size: 0.875rem;
+line-height: 1.0625rem;
+text-align: center;
+color: #909090;
+margin-bottom:42px;
+}
+
+/*편지지 영역*/
+.pic2-section{
+    display: none;
+}
+.pic1-section{
+    position:flex;
+    width: 100%;
+    background: #EAEAEA;
+}
+
+.slide_wrapper1{
+position: relative;
+align-items: center;
+width: 360px;
+margin: 0 auto;
+overflow: hidden;
+height: 200px;
+}
+
+.li{
+    list-style: none;
+}
+
+.slides1{
+position: absolute;
+left: 0; top: 30px;
+width: 1010px;
+transition: left 0.5s ease-out;
+}
+
+.slides1 li{
+float: left;
+width: 100px;
+height: 140px;
+}
+
+.slides1 li:not(:last-child){
+float: left;
+margin-right: 30px;
+}
+
+.button1 .controls1{
+    position: relative;
+    text-align: center;
+    margin-top: 28px;
+
+}
+.controls1 span{
+    position: absolute;
+    background: #EAEAEA;
+    color: rgb(161, 161, 161);
+    padding: 8px 15px;
+    margin: 0 10px;
+    font-size: 25px;
+    font-style: bold;
+}
+
+.controls1 span.prev1{right: calc(50% + 38px);}
+.controls1 span.next1{left:calc(50% + 38px);}
+
+
+/* 하단 다운로드 버튼*/
+button {
+    box-sizing: border-box;
+    cursor: pointer;
+    border: 0;
+    background-color: transparent;
+    -webkit-appearance: button;
+    outline: 0;
+    text-transform: none;
+    overflow: visible;
+}
+
+.downBtn{
+    display: block;
+    position: fixed;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 420px;
+    width: 90%;
+    cursor: pointer;
+    margin: 0 auto;
+    background: #333;
+    box-shadow: 0 4px 12px rgb(0 0 0 / 16%), 4px 8px 28px rgb(0 0 0 / 8%);
+    border-radius: 60px;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    line-height: 24px;
+    font-size: 24px;
+    min-height: 56px;
+    font-family: 'Inter';
+    font-style: normal;
+}
+
+.foot{
+    display:block;
+    height: 280px;
+}
+
+/* PC용 CSS */
+@media all and (min-width:1132px){
+/* 헤더 영역 CSS */
+.headerSection{
+    position: fixed;
+    width: 100%;
+    height:74px;
+    background-color: hsla(0,0%,100%,.9);
+    z-index:1;
+}
+.header{
+position:static;
+padding:15px 25px;
+}
+
+.logo{
+    float:left;
+    height:40px; 
+    width:30%;
+}
+
+.down{
+    float:right;
+    height:48px; 
+    width:30%;
+    margin-top:-4px;
+}
+
+/* 디스플레이 영역 CSS */
+.display-section{
+    z-index:2;
+}
+.display-section article{
+display: inline-flex;
+flex-direction: column;
+width: 100%;
+padding-top: 45.31%;
+
+background: linear-gradient(146.94deg, #D5E1DC 2.49%, #D2EBE1 98.7%);
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.display-section .sec-tit{
+display: flex;
+position: absolute;
+text-align:left;
+width: 600px;
+height: 154px;
+left: 13.5%;
+top: 164px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 3.35vw;
+line-height: 1.2;  
+
+color: #18674B;
+}
+
+.display-section img{
+display: flex;
+position: absolute;
+width: 61.8%;
+height: auto;
+left: 38.22%;
+top: 86px;
+padding-left: 0px;
+}
+
+/* mbtree 영역 */
+.tree-section{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+
+.tree-section .tree-text{
+margin-top: 200px;
+text-align: center;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 40px;
+line-height: 50px;
+color: #000000;
+} 
+
+.tree-section .tree-text2{
+margin-top:42px;
+margin-bottom:90px;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 300;
+font-size: 24px;
+line-height: 29px;
+text-align: center;
+color: #767676;
+}
+
+.tree2-section{
+display: flex;
+flex-direction: row;
+justify-content: center;
+}
+
+.tree2-section .letterImg{
+    justify-content: center;
+    padding: 0px 600px 300px 0px;
+    background: url(../img/tree2.png);
+    background-size: cover;
+    width: 130px;
+    height: auto;
+}
+
+.tree2-section .letterImg img{
+    padding: 420px 0px 0px 355px;
+    width: 100%;
+    height: auto;
+}
+
+/* 랜덤 채팅 영역 */
+.chat-section {
+    display: flex;
+    justify-content: center;
+}
+.chat-section .chat-text{
+margin-top: 200px;
+
+text-align: center;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 40px;
+line-height: 50px;
+
+color: #000000;
+}
+
+.chat-section .chat-text2{
+margin-top:42px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 300;
+font-size: 24px;
+line-height: 29px;
+
+text-align: center;
+color: #767676;
+margin-bottom: 90px;
+}
+
+.말풍선m-section{
+    display:none;
+}
+
+.말풍선pc-section{
+width: 100%;
+height:938px;
+background: #C2E2D5;
+display:flex;
+flex-direction: column;
+}
+
+.말풍선pc-section .말풍선pc2-section{
+display: inline-flex;
+flex-direction: column;
+align-items: center;
+padding: 30px 30px 30px 30px;
+}
+
+.말풍선pc2-section > .말풍선pc1{
+padding: 41px 0px 0px 510px;
+width: 400px;
+height: 89px;
+}
+
+.말풍선pc2-section > .말풍선pc2{
+padding: 49px 440px 0px 0px;
+width: 470px;
+height: 90px;
+
+}
+
+.말풍선pc2-section > .말풍선pc3{
+padding: 46px 0px 0px 570px;
+width: 340px;
+height: 90px;
+}
+
+.말풍선pc2-section > .말풍선pc4{
+padding: 62px 0px 0px 0px;
+width: 910px;
+height: 350px;
+/* width: 312px; */
+}
+
+/*포인트 제도*/
+.point-section {
+    display: flex;
+    justify-content: center;
+}
+.point-section .point-text{
+margin-top: 200px;
+
+text-align: center;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 40px;
+line-height: 50px;
+
+color: #000000;
+}
+
+.point-section .point-text2{
+margin-top:42px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 300;
+font-size: 24px;
+line-height: 29px;
+
+text-align: center;
+color: #767676;
+margin-bottom: 90px;
+}
+
+/*편지지 영역*/
+
+.pic1-section{
+    overflow: hidden;
+    display: none;
+}
+.pic2-section{
+    display: block;
+    position:flex;
+    width: 100%;
+    background: #EAEAEA;
+}
+
+.slide_wrapper{
+position: relative;
+align-items: center;
+width: 960px;
+margin: 0 auto;
+height: 420px;
+overflow: hidden;
+height: 480px;
+}
+
+.li{
+    list-style: none;
+}
+
+.slides{
+position: absolute;
+left: 0; top: 30px;
+width: 2670px;
+transition: left 0.5s ease-out;
+}
+
+.slides li{
+float: left;
+width: 300px;
+height: 420px;
+}
+
+.slides li:not(:last-child){
+float: left;
+margin-right: 30px;
+}
+
+.button .controls{
+    position: relative;
+    text-align: center;
+    margin-top: 38px;
+
+}
+.controls span{
+    position: absolute;
+    background: #EAEAEA;
+    color: rgb(161, 161, 161);
+    padding: 10px 20px;
+    margin: 0 10px;
+    font-size: 35px;
+    font-style: bold;
+}
+
+.controls span.prev{right: calc(50% + 50px);}
+.controls span.next{left:calc(50% + 50px);}
+
+/* 하단 다운로드 버튼*/
+button {
+    box-sizing: border-box;
+    cursor: pointer;
+    border: 0;
+    background-color: transparent;
+    -webkit-appearance: button;
+    outline: 0;
+    text-transform: none;
+    overflow: visible;
+}
+.downBtn{
+    display: block;
+    position: fixed;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 420px;
+    width: 90%;
+    cursor: pointer;
+    margin: 0 auto;
+    background: #333;
+    box-shadow: 0 4px 12px rgb(0 0 0 / 16%), 4px 8px 28px rgb(0 0 0 / 8%);
+    border-radius: 60px;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    line-height: 24px;
+    font-size: 24px;
+    min-height: 56px;
+    font-family: 'Inter';
+    font-style: normal;
+}
+
+div .foot{
+    display: block;
+    height: 280px;
+}
+}

@@ -1,4 +1,6 @@
-var slides = document.querySelector('.slides'),
+
+
+let slides = document.querySelector('.slides'),
 slide = document.querySelectorAll('.slides li'),
 currentIdx = 0,
 slideCount = slide.length,

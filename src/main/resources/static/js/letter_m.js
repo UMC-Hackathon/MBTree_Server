@@ -1,34 +1,36 @@
-var slides = document.querySelector('.slides1'),
-slide = document.querySelectorAll('.slides1 li'),
-currentIdx = 0,
-slideCount = slide.length,
-slideWidth = 100,
-slideMargin = 30,
-prevBtn = document.querySelector('.prev1'),
-nextBtn = document.querySelector('.next1');
 
-slides.style.width = (slideWidth + slideMargin)*slideCount - slideMargin + 'px';
 
-function moveSlide(num) {
-    slides.style.left = -num * 130 + 'px';
-    currentIdx = num;
+let slides1 = document.querySelector('.slides1'),
+slide1 = document.querySelectorAll('.slides1 li'),
+currentIdx1 = 0,
+slideCount1 = slide1.length,
+slideWidth1 = 100,
+slideMargin1 = 30,
+prevBtn1 = document.querySelector('.prev1'),
+nextBtn1 = document.querySelector('.next1');
+
+slides1.style.width = (slideWidth1 + slideMargin1)*slideCount1 - slideMargin1 + 'px';
+
+function moveSlide1(num) {
+    slides1.style.left = -num * 130 + 'px';
+    currentIdx1 = num;
 }
 
-nextBtn.addEventListener('click', function() {
+nextBtn1.addEventListener('click', function() {
 
-    if(currentIdx<slideCount-3){
-        moveSlide(currentIdx + 1);
-        console.log(currentIdx);
+    if(currentIdx1<slideCount1-3){
+        moveSlide1(currentIdx1 + 1);
+        console.log(currentIdx1);
     } else{
-        moveSlide(0);
+        moveSlide1(0);
     }
 });
 
-prevBtn.addEventListener('click', function() {
+prevBtn1.addEventListener('click', function() {
 
-    if(currentIdx > 0){
-        moveSlide(currentIdx - 1);
+    if(currentIdx1 > 0){
+        moveSlide1(currentIdx1 - 1);
     } else{
-        moveSlide(slideCount - 3);
+        moveSlide1(slideCount1 - 3);
     }
 });
